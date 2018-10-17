@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 #include <iomanip>
 
 int main(void)
@@ -10,5 +11,5 @@ int main(void)
         sum += (1/(2.0 * k - 1)) * sign;
     }
 
-    std::cout << std::setprecision(16) << "Sum of (-1)**(k+1) / (2k - 1), for k [1, 1000000] is: " << sum << std::endl;
+    std::cout << std::setprecision(16) << "PI: " << 4 * sum << "\nM_PI: " << M_PI << std::endl;
 }
