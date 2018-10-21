@@ -3,6 +3,11 @@
 #include <algorithm>
 #include <limits>
 
+void reverse(std::vector<int>& list)
+{
+    std::reverse(list.begin(), list.end());
+}
+
 int main(void)
 {
     std::random_device r;
@@ -27,8 +32,7 @@ int main(void)
         std::cout << list[i] << " ";
     }
     std::cout << std::endl;
-
-    std::reverse(list.begin(), list.end());
+    reverse(list);
 
     std::cout << "Reversed list: ";
     for (auto it = list.begin(); it != list.end(); ++it) {

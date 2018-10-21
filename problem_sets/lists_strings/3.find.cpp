@@ -3,6 +3,11 @@
 #include <algorithm>
 #include <limits>
 
+bool find_elem(const std::vector<int>& list, const int& elem)
+{
+    return std::find(list.begin(), list.end(), elem) != list.end();
+}
+
 int main(void)
 {
     std::random_device r;
@@ -30,7 +35,5 @@ int main(void)
     int elem;
     std::cin >> elem;
 
-    bool found = std::find(list.begin(), list.end(), elem) != list.end();
-
-    std::cout << "'" << elem << "'" << (found ? "" : " not") << " found in the list." << std::endl;
+    std::cout << "'" << elem << "'" << (find_elem(list, elem) ? "" : " not") << " found in the list." << std::endl;
 }

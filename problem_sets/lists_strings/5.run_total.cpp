@@ -3,16 +3,11 @@
 #include <algorithm>
 #include <limits>
 
-int largest(const std::vector<int>& list)
-{
-    return *std::max_element(list.begin(), list.end());
-}
-
 int main(void)
 {
     std::random_device r;
     std::default_random_engine e1(r());
-    std::uniform_int_distribution<int> uniform_dist(1, std::numeric_limits<int>::max());
+    std::uniform_int_distribution<int> uniform_dist(1, 100);
 
     size_t n;
     std::cout << "Enter list size (auto generated): ";
@@ -22,9 +17,11 @@ int main(void)
     }
 
     std::vector<int> list(n);
-
+    size_t run_total = 0;
     for (size_t i = 0; i < n; ++i) {
         list[i] = uniform_dist(e1);
+        run_total += list[i];
+        std::cout << "Running total:" << run_total << std::endl;
     }
 
     std::cout << "List contains: ";
@@ -33,5 +30,4 @@ int main(void)
     }
     std::cout << std::endl;
 
-    std::cout << "Largest: " << largest(list) << std::endl;
 }

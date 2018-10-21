@@ -3,16 +3,25 @@
 #include <algorithm>
 #include <limits>
 
-int largest(const std::vector<int>& list)
+std::vector<int> odd_pos_list(std::vector<int>& list)
 {
-    return *std::max_element(list.begin(), list.end());
+    size_t size = list.size();
+    std::vector<int> odd(size / 2 + size % 2);
+    bool flag = true;
+
+    for (auto it = list.begin(), oit = odd.begin(); it != list.end(); ++it) {
+        if (flag) *oit++ = *it;
+        flag = !flag;
+    }
+
+    return odd;
 }
 
 int main(void)
 {
     std::random_device r;
     std::default_random_engine e1(r());
-    std::uniform_int_distribution<int> uniform_dist(1, std::numeric_limits<int>::max());
+    std::uniform_int_distribution<int> uniform_dist(1, 100);
 
     size_t n;
     std::cout << "Enter list size (auto generated): ";
@@ -33,5 +42,11 @@ int main(void)
     }
     std::cout << std::endl;
 
-    std::cout << "Largest: " << largest(list) << std::endl;
+    std::vector<int> odd_list = odd_pos_list(list);
+
+    for (auto it = odd_list.begin(); it != odd_list.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
 }
